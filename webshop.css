@@ -1,0 +1,11 @@
+.main-content {
+    margin-top:1em;
+}
+
+body {
+    background-color: #305F72;
+    background-repeat: no-repeat;
+}
+.jumbotron{
+    background-color: #305F72 !important;
+}
