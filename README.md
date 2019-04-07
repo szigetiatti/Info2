@@ -21,7 +21,7 @@ Termék tábla:
     darabszám(darab)
     leírás(leiras)
     ár(ar)
-    márka(marka)
+    gyártó(gyarto)
     
 Kapcsolótábla (megvasarolta): melyik terméket melyik vevő vásárolta meg. 1 terméket 1 vevő többször is megvásárolhat
     azonosító (idmegvasarolta)
