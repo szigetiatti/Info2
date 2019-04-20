@@ -15,11 +15,13 @@ if(isset($_POST['update'])){
 
     $query=sprintf("UPDATE termek 
                     SET nev='%s', ar='%s', darabszam='%s', gyarto='%s', leiras='%s'
-                    WHERE id='%s",
+                    WHERE id=%s",
                     $nev,$ar,$darabszam,$gyarto,$leiras,$id);
     
     mysqli_query($link,$query) or die(mysqli_error($link));
     $successful_update=true;
+   // header("Location: termek.php");
+    //return;
 }
 else if(isset($_POST['delete'])){
     $query1=sprintf('DELETE FROM megvasarolt WHERE termekid=%s',
@@ -63,12 +65,15 @@ else if(isset($_POST['delete'])){
         <?php if ($successful_update): ?>
         <p>
             <span class="badge badge-success">Termék sikeresen módosítva</span>
+            <a class="btn btn-success btn-sm" href="termek.php">
+                                <i class="fa fa-edit"></i> Vissza a termékekhez
+                            </a>
         </p>
         <?php endif; ?>
         <form method="post" action="">
             <input type="hidden" name="id" id="id" value="<?=$termekid?>" />
             <div class="form-group">
-                <label for="isbn">Név</label>
+                <label for="nev">Név</label>
                 <input class="form-control" name="nev" id="nev" type="text" value="<?=$row['nev']?>" />
             </div>
             <div class="form-group">
@@ -76,15 +81,15 @@ else if(isset($_POST['delete'])){
                 <input required class="form-control" name="ar" id="ar" type="number" value="<?=$row['ar']?>" />
             </div>
             <div class="form-group">
-                <label for="szerzo">Gyártó</label>
+                <label for="gyarto">Gyártó</label>
                 <input class="form-control" name="gyarto" id="gyarto" type="text" value="<?=$row['gyarto']?>" />
             </div>
              <div class="form-group">
-                <label for="kiado">Darabszám</label>
+                <label for="darabszam">Darabszám</label>
                 <input class="form-control" name="darabszam" id="darabszam" type="nubmer" value="<?=$row['darabszam']?>" />
             </div>
             <div class="form-group">
-                <label for="megjelenesev">Leírás</label>
+                <label for="leiras">Leírás</label>
                 <input class="form-control" name="leiras" id="leiras" type="text" value="<?=$row['leiras']?>" />
             </div>
             <input class="btn btn-success" name="update" type="submit" value="Mentés" />
