@@ -1,5 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #FCBB6D;">
-        <a class="navbar-brand" href="index.php">Kezdőlap</a>
+<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light " style="background-color: #2B7A78;">
+  <div class="container">
+    <a class="navbar-brand" href="index.php">
+      <img src="logo.png" width="40" heigth="40" class="img-circle" alt="szigetiattila">
+    </a>   
+  <a class="navbar-brand" href="index.php">Kezdőlap</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -15,10 +19,19 @@
             <li class="nav-item">
               <a class="nav-link" href="ujtermek.php">Új termék hozzáadása</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="vevo.php">Vásárlók</a>
+            </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Keresett termék..." aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0 " type="submit" >Keresés</button>
+          
+          <?php $keresref=NULL ?>
+          <form class="form-inline" action="searchnav.php?keresref=keresref>">
+             <input name="keresref" class="form-control mr-SM-2" type="search" placeholder="Írja be a termék nevét..." aria-label="search" value="<?=$keresref?>">
+              <button nethod="submit" class="btn btn-outline-dark my-2 my-sm-0">Keresés</button>
           </form>
+          
         </div>
+      </div>  
       </nav>
+
+      

@@ -3,7 +3,7 @@ include 'webshop.php';
 $link=getDb();
 //módosítás:
 //mysqli_real_escape_stringel-- az SQL injection-ellen védekezünk
-
+$successful_delete=false;
 $successful_update=false;
 if(isset($_POST['update'])){
     $id=mysqli_real_escape_string($link,$_POST['id']);
@@ -31,15 +31,17 @@ else if(isset($_POST['delete'])){
     $ret1=mysqli_query($link,$query1) or die(mysqli_error($link));
     $ret2=mysqli_query($link,$query2) or die(mysqli_error($link));
     
+    $successful_delete=true;
     //visszatérünk az oldalra ahonnan eljöttünk- termek.php
-    header("Location: termek.php");
-    return;
+   // header("Location: termek.php");
+    //return;
 }
 ?>
 
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="webshop.css">
     <title>Webshop</title>
 </head>
@@ -62,6 +64,15 @@ else if(isset($_POST['delete'])){
             }
         ?>
      <h1>Termék adatainak módosítása</h1>
+     <?php if ($successful_delete): ?>
+        <p>
+            <span class="badge badge-success">Termék sikeresen törölve!</span>
+            <a class="btn btn-success btn-sm" href="termek.php">
+                                <i class="fa fa-edit"></i> Vissza a termékekhez
+                            </a>
+        </p>
+        <?php endif; ?>
+
         <?php if ($successful_update): ?>
         <p>
             <span class="badge badge-success">Termék sikeresen módosítva</span>
@@ -70,6 +81,9 @@ else if(isset($_POST['delete'])){
                             </a>
         </p>
         <?php endif; ?>
+        
+     
+
         <form method="post" action="">
             <input type="hidden" name="id" id="id" value="<?=$termekid?>" />
             <div class="form-group">
@@ -100,6 +114,9 @@ else if(isset($_POST['delete'])){
             closeDb($link);
         ?>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </body>
 </html>

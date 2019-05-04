@@ -3,9 +3,26 @@
 }
 
 body {
-    background-color: #305F72;
+    background-color: #3AAFA9;
+    background-image: url(background_bluish.jpg);
+    background-blend-mode: normal;
+    background-attachment: fixed;
     background-repeat: no-repeat;
+    background-position: right top;
 }
 .jumbotron{
-    background-color: #305F72 !important;
+    background-color: #3AAFA9 !important;
+
 }
+.bg-4 { 
+    background-color: #2f2f2f;
+    color: #ffffff;
+  }
+
+  footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+    background:#6cf;
+  }
