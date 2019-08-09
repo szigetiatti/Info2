@@ -9,10 +9,10 @@ use webshop;
 create table termek(
 	id int primary key auto_increment,
 	nev nvarchar(13),
-    ar int not null,
+    	ar int not null,
 	darabszam int not null,
-    gyarto nvarchar(55),
-    leiras nvarchar(100)
+    	gyarto nvarchar(55),
+    	leiras nvarchar(100)
 );
 
 insert into termek (nev, ar, darabszam, gyarto, leiras) values ('Iphone XE', 192000, 2, 'Apple', 'Visszater a legpraktikusabb iphone');
@@ -22,7 +22,7 @@ insert into termek (nev, ar, darabszam, gyarto, leiras) values ('Iphone SE', 100
 
 
 create table vevo(
-	id int  primary key auto_increment,
+    id int  primary key auto_increment,
     vezeteknev nvarchar(55) not null,
     keresztnev nvarchar(55) not null,
     lakcim nvarchar(45),
@@ -36,11 +36,11 @@ insert into vevo (vezeteknev, keresztnev, lakcim, kartyaszam) values ('Pokoli', 
 create table megvasarolt(
 	id int primary key auto_increment,
 	vevoid int not null,
-    termekid int not null,
-    vasarlasidatum date not null,
+    	termekid int not null,
+    	vasarlasidatum date not null,
     
-    foreign key (vevoid) references vevo(id),
-    foreign key (termekid) references termek(id)
+    	foreign key (vevoid) references vevo(id),
+    	foreign key (termekid) references termek(id)
 );
 
 insert into megvasarolt (vevoid, termekid, vasarlasidatum) values (1, 1, subdate(curdate(), 50)); 
